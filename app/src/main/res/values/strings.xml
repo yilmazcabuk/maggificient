@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">MagGIFicient</string>
+    <string name="message_build_version_name">v%s #%d</string>
+
+    <string name="message_record_capture_permission_required">İzin Gerekli</string>
+    <string name="message_record_capture_session_exception_error">Yakalama oturumu yapılandırılamadı</string>
+    <string name="message_record_capture_interrupted_exception_error">Kamera yakınlaştırmasını kilitlemeye çalışırken kesintiye uğradı</string>
+    <string name="message_record_capture_unable_access_camera_exception_error">Kameraya ulaşılamadı</string>
+    <string name="message_record_capture_camera_api_not_supported_exception_error">Camera2API bu cihazda desteklenmiyor</string>
+    <string name="message_record_capture_preview_sizes_exception_error">Kullanılabilir video önizleme boyutları alınamıyor</string>
+    <string name="message_record_capture_timeout_exception_error">Kamera açılmasını kilitlemek için bekleme süresi doldu</string>
+    <string name="message_record_capture_camera_access_exception_error">Kamera Erişim İstisnası</string>
+    <string name="message_record_capture_runtime_exception_error">Çalışma Zamanı İstisna Hatası</string>
+
+    <string name="record_capture_message_trim_fail">FFMPEG Kırpma Başarısız</string>
+    <string name="record_capture_message_not_supported">FFMPEG Desteklenmiyor</string>
+    <string name="record_capture_title_gallery_select">Video Seçin</string>
+
+    <string name="setting_list_title">Merhaba</string>
+    <string name="setting_list_paragraph_1">Sizi GIF oluşturma eğlencenizden alıkoymak istemedik</string>
+    <string name="setting_list_paragraph_2">MagGIFicient bitirme projesi olarak 3 öğrenci tarafından oluşturuldu.</string>
+    <string name="setting_list_paragraph_3">Umarız bizim yazarken eğlendiğimiz kadar siz de kullanırken eğlenirsiniz!</string>
+
+    <string name="setting_list_title_more_from_me">Daha fazlası</string>
+    <string name="setting_list_title_marmara">Marmara</string>
+    <string name="setting_list_title_tbmyo">TBMYO</string>
+    <string name="setting_list_title_source_code">Kaynak Kodu</string>
+    <string name="setting_list_title_credits">Credits</string>
+
+    <string name="text_android_library">Android Kütüphanesi</string>
+    <string name="text_bravobit">Bravobit, FFMPEG Android</string>
+    <string name="text_font_library">Font Kütüphanesi</string>
+    <string name="text_fonts">Christian Robertson, Roboto Regular</string>
+    <string name="text_share_app_intent">Nasıl paylaşmak istersiniz</string>
+    <string name="title_share_app">Bir arkadaşınızla paylaşın</string>
+    <string name="title_thanks">Teşekkürler</string>
+
+    <!-- Content descriptions -->
+    <string name="button_back_desc">Back button</string>
+    <string name="button_flash_desc">Flash button</string>
+    <string name="button_gallery_desc">Gallery button</string>
+    <string name="button_record_desc">Record button</string>
+    <string name="button_retry_desc">Retry Button</string>
+    <string name="button_send_desc">Send button</string>
+    <string name="button_settings_desc">Settings button</string>
+    <string name="button_share_desc">Share button</string>
+    <string name="button_support_desc">Support button</string>
+    <string name="button_switch_desc">Switch button</string>
+    <string name="icon_marmara_desc">Marmara icon</string>
+    <string name="icon_tbmyo_desc">TBMYO icon</string>
+    <string name="icon_maggificient_desc">Maggificient icon</string>
+    <string name="icon_github_desc">Github icon</string>
+
+</resources>
