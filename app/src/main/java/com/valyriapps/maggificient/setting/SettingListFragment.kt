@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.fragment_setting_list.*
 
 class SettingListFragment : Fragment() {
     companion object {
-        private const val SOURCE_CODE_URL = "https://github.com/delacrixmorgan/mamika-android"
         private const val MARMARA_PACKAGE_NAME = "marmara.edu.tr"
-        private const val TBMYO_PACKAGE_NAME = "com.valyriapps.tbmyo"
+        private const val SOURCE_CODE_URL = "https://github.com/ylmzcbk/maggificient"
+        private const val TBMYO_URL = "https://tbmyo.marmara.edu.tr/"
 
         fun newInstance() = SettingListFragment()
     }
@@ -48,7 +48,7 @@ class SettingListFragment : Fragment() {
         }
 
         this.tbmyoViewGroup.setOnClickListener {
-            context.launchPlayStore(TBMYO_PACKAGE_NAME)
+            context.launchWebsite(TBMYO_URL)
         }
 
         this.sourceCodeButton.setOnClickListener {

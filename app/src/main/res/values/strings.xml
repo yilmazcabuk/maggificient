@@ -25,13 +25,15 @@
     <string name="setting_list_title_marmara">Marmara</string>
     <string name="setting_list_title_tbmyo">TBMYO</string>
     <string name="setting_list_title_source_code">Kaynak Kodu</string>
-    <string name="setting_list_title_credits">Credits</string>
+    <string name="setting_list_title_credits">Kütüphaneler</string>
 
     <string name="text_android_library">Android Kütüphanesi</string>
     <string name="text_bravobit">Bravobit, FFMPEG Android</string>
+    <string name="text_extra">#ShotOnMaggificient</string>
     <string name="text_font_library">Font Kütüphanesi</string>
     <string name="text_fonts">Christian Robertson, Roboto Regular</string>
     <string name="text_share_app_intent">Nasıl paylaşmak istersiniz</string>
+    <string name="title_share">Dosyayı Paylaş</string>
     <string name="title_share_app">Bir arkadaşınızla paylaşın</string>
     <string name="title_thanks">Teşekkürler</string>
 
