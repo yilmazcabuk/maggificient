@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MagGIFicient</string>
-    <string name="message_build_version_name">v%s #%d</string>
+    <string name="version_name">1.0.0</string>
+    <string name="version_code">1</string>
+    <string name="message_build_version_name">v%s #%s</string>
 
     <string name="message_record_capture_permission_required">İzin Gerekli</string>
     <string name="message_record_capture_session_exception_error">Yakalama oturumu yapılandırılamadı</string>

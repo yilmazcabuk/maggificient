@@ -33,8 +33,8 @@ class SettingListFragment : Fragment() {
     }
 
     private fun setupLayouts() {
-        val versionName = BuildConfig.VERSION_NAME
-        val versionCode = BuildConfig.VERSION_CODE
+        val versionName = getString(R.string.version_name)
+        val versionCode = getString(R.string.version_code)
 
         this.buildNumberTextView.text =
             getString(R.string.message_build_version_name, versionName, versionCode)
