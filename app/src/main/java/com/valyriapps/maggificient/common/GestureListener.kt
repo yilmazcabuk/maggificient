@@ -42,7 +42,10 @@ class GestureListener(private val listener: SwipeGesture) : GestureDetector.OnGe
         this.listener.onLongPressed()
     }
 
+    // Ekrandaki kontrolleri gösterir
     override fun onShowPress(e: MotionEvent?) = Unit
+
+    // Aşağı sürükleme olayını ayarlar
     override fun onDown(e: MotionEvent?): Boolean = true
 
     // Kaydırma olayını ayarlar
