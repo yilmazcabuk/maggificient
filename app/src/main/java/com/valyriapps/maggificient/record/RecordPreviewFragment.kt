@@ -37,7 +37,7 @@ class RecordPreviewFragment : Fragment() {
         const val ARG_RECORD_PREVIEW_VIDEO_URL = "RecordPreview.videoUrl"
         const val ARG_RECORD_PREVIEW_IS_GALLERY_VIDEO = "RecordPreview.isGalleryVideo"
 
-        private const val FILENAME_FFMPEG_PALATTE = "palette.png"
+        private const val FILENAME_FFMPEG_PALETTE = "palette.png"
 
         fun newInstance(videoUrl: String, isGalleryVideo: Boolean): RecordPreviewFragment {
             val fragment = RecordPreviewFragment()
@@ -61,13 +61,13 @@ class RecordPreviewFragment : Fragment() {
     private var isGalleryVideo: Boolean = false
     private var simpleExoPlayer: SimpleExoPlayer? = null
     private var trackSelector: DefaultTrackSelector? = null
-    private var paletteFilePath = "/$FILENAME_FFMPEG_PALATTE"
+    private var paletteFilePath = "/$FILENAME_FFMPEG_PALETTE"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         this.ffmpeg = FFmpeg.getInstance(this.context)
-        this.paletteFilePath = "${this.context?.filesDir}/$FILENAME_FFMPEG_PALATTE"
+        this.paletteFilePath = "${this.context?.filesDir}/$FILENAME_FFMPEG_PALETTE"
 
         this.bandwidthMeter = DefaultBandwidthMeter()
         this.dataSourceFactory = DefaultDataSourceFactory(
@@ -123,6 +123,7 @@ class RecordPreviewFragment : Fragment() {
         releasePlayer()
     }
 
+    // GIF oynatıcıyı oluşturur ve GIF'i oynatmaya başlar
     private fun initialiseVideoPlayer(videoUrl: String) {
         val mediaSource = ExtractorMediaSource.Factory(this.dataSourceFactory)
             .createMediaSource(Uri.parse(videoUrl))
@@ -139,6 +140,7 @@ class RecordPreviewFragment : Fragment() {
         this.playerView.resizeMode = RESIZE_MODE_ZOOM
     }
 
+    // GIF oynatıcıyı boşaltır
     private fun releasePlayer() {
         if (this.simpleExoPlayer == null) return
 
@@ -149,6 +151,7 @@ class RecordPreviewFragment : Fragment() {
         this.trackSelector = null
     }
 
+    // Dönüştürme tamamlandıktan sonra ekranda görünen butonların tıklama olaylarını ayarlar
     private fun setupListeners() {
         this.backButton.setOnClickListener {
             this.activity?.supportFragmentManager?.popBackStack()
@@ -169,6 +172,7 @@ class RecordPreviewFragment : Fragment() {
         }
     }
 
+    // Ayarlar ekranını göstermeyi sağlar
     private fun launchSettingsFragment() {
         val settingsFragment = SettingListFragment.newInstance()
         this.activity?.apply {
@@ -179,6 +183,8 @@ class RecordPreviewFragment : Fragment() {
         }
     }
 
+
+    // Oluşturulacak GIF'in özelliklerini ayarlar
     private fun generatePalette() {
         if (!this.ffmpeg.isSupported) {
             Snackbar.make(
@@ -204,6 +210,7 @@ class RecordPreviewFragment : Fragment() {
             this.paletteFilePath
         )
 
+        // FFmpeg modülünü başlatır
         this.ffmpeg.execute(command, object : ExecuteBinaryResponseHandler() {
             override fun onStart() {
                 progressBar.visibility = View.VISIBLE
@@ -228,6 +235,7 @@ class RecordPreviewFragment : Fragment() {
         })
     }
 
+    // Seçilen video dosyasını GIF'e dönüştürür
     private fun generateGif() {
         val context = this.context ?: return
         var isConversionSuccessful = false
@@ -249,6 +257,7 @@ class RecordPreviewFragment : Fragment() {
             outputFilePath
         )
 
+        // Alınan videoyu, GIF'e dönüştürme işlemini başlatır
         this.ffmpeg.execute(command, object : ExecuteBinaryResponseHandler() {
             override fun onStart() {
                 progressBar.visibility = View.VISIBLE
@@ -295,6 +304,7 @@ class RecordPreviewFragment : Fragment() {
         })
     }
 
+    // Oluşturulan GIF'in paylaşma fonksiyonu
     private fun shareFile(file: File) {
         val context = this.context ?: return
         val intentShareFile = Intent(Intent.ACTION_SEND)

@@ -83,6 +83,7 @@ lateinit var previewRequestBuilder: CaptureRequest.Builder
 //endregion
 
 //region Activity Extension
+// İzin sorgusunu inceler
 fun Activity.hasPermissionsGranted(permissions: Array<String>) =
     permissions.none {
         ContextCompat.checkSelfPermission(
@@ -91,6 +92,7 @@ fun Activity.hasPermissionsGranted(permissions: Array<String>) =
         ) != PackageManager.PERMISSION_GRANTED
     }
 
+// Ekran döndürme olayını ayarlar
 fun Activity.configureTransform(previewSize: Size, viewWidth: Int, viewHeight: Int) {
     val rotation = (this as FragmentActivity).windowManager.defaultDisplay.rotation
     val matrix = Matrix()
@@ -117,6 +119,7 @@ fun Activity.configureTransform(previewSize: Size, viewWidth: Int, viewHeight: I
 //endregion
 
 //region Context Extension
+// Uygulamanın varsayılan kayıt klasöründen, dosya yolu bilgisini getirir
 fun Context.getVideoFilePath(fileType: FileType): String {
     val dir = this.filesDir
     val folder = this.getString(R.string.app_name)
@@ -134,6 +137,7 @@ fun Context.getVideoFilePath(fileType: FileType): String {
     }
 }
 
+// Video URI bilgisinden dosya yolu bilgisini getirir
 @SuppressLint("Recycle")
 fun Context.getFilePathFromVideoURI(contentUri: Uri): String {
     val filePath = arrayOf(MediaStore.Files.FileColumns.DATA)
@@ -149,6 +153,7 @@ fun Context.getFilePathFromVideoURI(contentUri: Uri): String {
 //endregion
 
 //region Video Size
+// Video genişliğini ayarlar
 fun chooseVideoSize(choices: Array<Size>) =
     choices.first { it.width <= 1080 }
 //endregion

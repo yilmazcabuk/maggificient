@@ -27,7 +27,7 @@ class SettingCreditDetailFragment : Fragment() {
         setupListeners()
     }
 
-    //Credits ekranındaki tıklanabilir öğelerin işlevlerini belirler fonksiyondur
+    // Credits ekranındaki tıklanabilir öğelerin işlevlerini belirler fonksiyondur
     private fun setupListeners() {
         val context = this.context ?: return
 

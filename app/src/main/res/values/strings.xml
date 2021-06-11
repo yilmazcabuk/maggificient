@@ -12,7 +12,7 @@
     <string name="message_record_capture_preview_sizes_exception_error">Kullanılabilir video önizleme boyutları alınamıyor</string>
     <string name="message_record_capture_timeout_exception_error">Kamera açılmasını kilitlemek için bekleme süresi doldu</string>
     <string name="message_record_capture_camera_access_exception_error">Kamera Erişim İstisnası</string>
-    <string name="message_record_capture_runtime_exception_error">Çalışma Zamanı İstisna Hatası</string>
+    <string name="message_record_capture_runtime_exception_error">RunTime Exception Hatası</string>
 
     <string name="record_capture_message_trim_fail">FFMPEG Kırpma Başarısız</string>
     <string name="record_capture_message_not_supported">FFMPEG Desteklenmiyor</string>

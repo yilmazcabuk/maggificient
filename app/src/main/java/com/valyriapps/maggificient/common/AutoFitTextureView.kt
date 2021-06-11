@@ -10,21 +10,10 @@ class AutoFitTextureView @JvmOverloads constructor(
     defStyle: Int = 0
 ) : TextureView(context, attrs, defStyle) {
 
-    /**
-     * A [TextureView] that can be adjusted to a specified aspect ratio.
-     */
-
     private var ratioWidth = 0
     private var ratioHeight = 0
 
-    /**
-     * Sets the aspect ratio for this view. The size of the view will be measured based on the ratio
-     * calculated from the parameters. Note that the actual sizes of parameters don't matter, that
-     * is, calling setAspectRatio(2, 3) and setAspectRatio(4, 6) make the same result.
-     *
-     * @param width  Relative horizontal size
-     * @param height Relative vertical size
-     */
+    // Mevcut görünüm için en-boy oranını ayarlar
     fun setAspectRatio(width: Int, height: Int) {
         if (width < 0 || height < 0) {
             throw IllegalArgumentException("Size cannot be negative.")
@@ -35,6 +24,7 @@ class AutoFitTextureView @JvmOverloads constructor(
         this.requestLayout()
     }
 
+    // Görünümün ölçüsünü alır
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 

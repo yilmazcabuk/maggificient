@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //İzinleri ayarlayan fonksiyondur
+    // İzinleri ayarlayan fonksiyondur
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Kayıt işlemini başlatır
+    // Kayıt işlemini başlatır
     private fun launchRecordActivity() {
         if (hasPermissionsGranted(VIDEO_PERMISSIONS)) {
             val recordIntent = RecordActivity.newLaunchIntent(this)
@@ -60,13 +60,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Verilmeyen izin varsa, bunu tekrar sorar
+    // Verilmeyen izin varsa, bunu tekrar sorar
     private fun shouldShowRequestPermissionRationale(permissions: Array<String>) =
         permissions.any {
             ActivityCompat.shouldShowRequestPermissionRationale(this, it)
         }
 
-    //Kamera izni ister
+    // Kamera izni ister
     private fun requestVideoPermissions() {
         if (shouldShowRequestPermissionRationale(VIDEO_PERMISSIONS)) {
             AlertDialog.Builder(this)
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Verilen izin türü belirler
+    // İzin verilip verilmediğini kontrol eder
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -104,5 +104,4 @@ class MainActivity : AppCompatActivity() {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
-    //endregion
 }

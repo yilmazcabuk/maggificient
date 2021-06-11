@@ -45,6 +45,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         fun newInstance(): RecordCaptureFragment = RecordCaptureFragment()
     }
 
+    // Kameranın durumunu belirten bir metodu çağırır
     private val stateCallback = object : CameraDevice.StateCallback() {
         override fun onOpened(cameraDevice: CameraDevice) {
             cameraOpenCloseLock.release()
@@ -74,6 +75,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         }
     }
 
+    // Ekrana görüntü geldiği bildirimini yapacak olan bir Listener ataması yapar
     private val surfaceTextureListener = object : TextureView.SurfaceTextureListener {
         override fun onSurfaceTextureAvailable(texture: SurfaceTexture, width: Int, height: Int) {
             openCamera()
@@ -87,6 +89,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         override fun onSurfaceTextureUpdated(surfaceTexture: SurfaceTexture) = Unit
     }
 
+    // Çekilebilecek en yüksek video süresini ayarlar
     private val countDownTimer = object : CountDownTimer(MAX_DURATION_IN_MILLISECONDS, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             val elapseTime: Int =
@@ -204,6 +207,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     //endregion
 
     //region LaunchFragments
+    // Galeri'den video seçilmesi olayını başlatır
     private fun launchGalleryVideoPickerIntent() {
         val galleryVideoIntent = Intent()
         val intentChooser = Intent.createChooser(
@@ -217,6 +221,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         startActivityForResult(intentChooser, REQUEST_GALLERY_PICK)
     }
 
+    // Önizleme çerçevesini hazırlar
     private fun preparePreviewFragment(videoUrl: String, isGalleryVideo: Boolean = false) {
         if (!isGalleryVideo) {
             this.context?.saveFileExternally(videoUrl)
@@ -224,6 +229,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         launchPreviewFragment(videoUrl, isGalleryVideo)
     }
 
+    // Önizleme çerçevesini başlatır
     private fun launchPreviewFragment(videoUrl: String, isGalleryVideo: Boolean = false) {
         val previewFragment = RecordPreviewFragment.newInstance(videoUrl, isGalleryVideo)
         this.activity?.apply {
@@ -240,6 +246,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     //endregion
 
     //region Gallery
+    // Videoyu kırpar
     private fun trimVideoDuration(videoUrl: String) {
         val context = this.context ?: return
         var isTrimSuccessful = false
@@ -297,12 +304,14 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     //endregion
 
     //region BackgroundThread
+    // Arkaplan işlemini başlatır
     private fun startBackgroundThread() {
         backgroundThread = HandlerThread(this.tag)
         backgroundThread?.start()
         backgroundHandler = Handler(backgroundThread?.looper)
     }
 
+    // Arkaplan işlemini sonlandırır
     private fun stopBackgroundThread() {
         backgroundThread?.quitSafely()
         try {
@@ -316,6 +325,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     //endregion
 
     //region Camera Zoom
+    // Pinch yapma durumunda kameranın yakınlaştırmasını sağlar
     private fun pinchToZoom(event: MotionEvent) {
         val characteristics = cameraManager.getCameraCharacteristics(cameraDirection)
         val sensorRect = characteristics.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE)
@@ -356,6 +366,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         fingerSpacing = currentFingerSpacing
     }
 
+    // Pan yapılması durumunda kameranın yakınlaştırmasını sağlar
     private fun panToZoom(event: MotionEvent) {
         val characteristics = cameraManager.getCameraCharacteristics(cameraDirection)
         val sensorRect = characteristics.get(CameraCharacteristics.SENSOR_INFO_ACTIVE_ARRAY_SIZE)
@@ -404,6 +415,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     //region Camera
     @SuppressLint("MissingPermission")
     @Throws(RuntimeException::class)
+    // Gerekli izinlerin verilmiş olması durumunda kamerayı açar
     private fun openCamera() {
         val activity = this.activity
         if (activity == null || activity.isFinishing) return
@@ -482,6 +494,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     }
 
     @Throws(RuntimeException::class)
+    // Kamerayı kapatır
     private fun closeCamera() {
         try {
             cameraOpenCloseLock.acquire()
@@ -502,6 +515,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         }
     }
 
+    // Önizlemeyi başlatır
     private fun startPreview() {
         try {
             if (maggificientCameraDevice == null || !this.textureView.isAvailable) return
@@ -543,6 +557,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         }
     }
 
+    // Önizlemeyi günceller
     private fun updatePreview() {
         try {
             if (maggificientCameraDevice == null) return
@@ -563,6 +578,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         }
     }
 
+    // Kameranın ışığını açar
     private fun toggleCameraFlash() {
         if (cameraDirection == CAMERA_BACK) {
             if (isFlashOn) {
@@ -583,6 +599,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
 
     @SuppressLint("MissingPermission")
     @Throws(Exception::class)
+    // Kameranın ön-arka durumunu değiştirir
     private fun switchCameraOutputs() {
         when (cameraDirection) {
             CAMERA_BACK -> {
@@ -613,6 +630,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     //endregion
 
     //region Record Controls
+    // Video çekimini başlatır
     private fun toggleRecordVideo() {
         this.recordButton.performHapticContextClick()
 
@@ -627,6 +645,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
     }
 
     @Throws(IOException::class)
+    // Medya kaydı yapmak için kamera, mikrofon vb. medya olaylarını ayarlar
     private fun setUpMediaRecorder() {
         val cameraActivity = this.activity ?: return
 
@@ -666,6 +685,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         }
     }
 
+    // Video kaydını başlatır
     private fun startRecordingVideo() {
         if (maggificientCameraDevice == null || !this.textureView.isAvailable) return
 
@@ -727,6 +747,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         }
     }
 
+    // Video kaydını durdurur
     private fun stopRecordingVideo() {
         if (this.progressBar.progress > 1) {
             this.recordButton.setImageResource(0)
@@ -770,6 +791,7 @@ class RecordCaptureFragment : Fragment(), SwipeGesture {
         }
     }
 
+    // Önizlemeden çıkılmasını sağlar
     private fun closePreviewSession() {
         captureSession?.close()
         captureSession = null

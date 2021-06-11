@@ -39,6 +39,7 @@ object PermissionsUtils {
         ALLOW, DENY, NEVER_ASK_AGAIN
     }
 
+    // İlgili iznin verilmesi durumunda çalışması gereken komutları ayarlar
     fun <T : View.OnCreateContextMenuListener> isPermissionGranted(
         fragmentOrActivity: T,
         type: Permission
@@ -70,6 +71,7 @@ object PermissionsUtils {
         return true
     }
 
+    // İlgili iznin verilmesi için kullanıcıya sorgu gönderir
     fun <T : View.OnCreateContextMenuListener> requestPermission(
         fragmentOrActivity: T,
         type: Permission
@@ -88,6 +90,7 @@ object PermissionsUtils {
         }
     }
 
+    // Sorgunun gönderilme durumunu sorgular
     fun <T : View.OnCreateContextMenuListener> isRequestGranted(
         requestCode: Int,
         permissions: Array<out String>,

@@ -32,7 +32,7 @@ class SettingListFragment : Fragment() {
         setupListeners()
     }
 
-    //Uygulama sürümü ve kodunu ekrana gönderir
+    // Uygulama sürümü ve kodunu ekrana gönderir
     private fun setupLayouts() {
         val versionName = getString(R.string.version_name)
         val versionCode = getString(R.string.version_code)
@@ -41,7 +41,7 @@ class SettingListFragment : Fragment() {
             getString(R.string.message_build_version_name, versionName, versionCode)
     }
 
-    //Butonların tıklama eylemlerini belirler
+    // Butonların tıklama eylemlerini belirler
     private fun setupListeners() {
         val context = this.context ?: return
 
@@ -74,7 +74,7 @@ class SettingListFragment : Fragment() {
         }
     }
 
-    //Credits ekranını gösteren fonksiyondur
+    // Credits ekranını gösteren fonksiyondur
     private fun launchCreditFragment() {
         val creditFragment = SettingCreditDetailFragment.newInstance()
         this.activity?.apply {

@@ -11,6 +11,7 @@ import android.view.View
 import java.io.File
 import kotlin.math.sqrt
 
+// Dokunma geri bildirimi olayını düzenler
 fun View.performHapticContextClick() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
@@ -19,6 +20,7 @@ fun View.performHapticContextClick() {
     }
 }
 
+// Multi touch olayını düzenler
 fun MotionEvent.calculateFingerSpacing(): Float {
     val x = getX(0) - getX(1)
     val y = getY(0) - getY(1)
@@ -26,6 +28,7 @@ fun MotionEvent.calculateFingerSpacing(): Float {
     return sqrt((x * x + y * y).toDouble()).toFloat()
 }
 
+// Oluşturulan dosyayı girilen yola bağlı olarak hafızaya kaydeder
 fun Context.saveFileExternally(videoUrl: String) {
     val dir = Environment.getExternalStorageDirectory().path
     val folder = getString(R.string.app_name)
@@ -43,6 +46,7 @@ fun Context.saveFileExternally(videoUrl: String) {
     )
 }
 
+// Girilen paket adına ait Play Store sayfasını açar
 fun Context.launchPlayStore(packageName: String) {
     val url = "https://play.google.com/store/apps/details?id=$packageName"
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -51,6 +55,7 @@ fun Context.launchPlayStore(packageName: String) {
     startActivity(intent)
 }
 
+// Girilen URL'e ait web sitesini açar
 fun Context.launchWebsite(url: String) {
     val intent = Intent(Intent.ACTION_VIEW)
 
@@ -58,6 +63,7 @@ fun Context.launchWebsite(url: String) {
     startActivity(intent)
 }
 
+// Uygulama paylaşım ekranındaki mesajı ayarlar
 fun Context.shareAppIntent(message: String) {
     val intent = Intent(Intent.ACTION_SEND)
 
